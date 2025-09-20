@@ -1,47 +1,40 @@
-#include <iostream>              // Подключаем библиотеку для ввода/вывода
-using namespace std;             // Чтобы использовать cout, cin без std::
-
-int main() {
-    int n;                       // Переменная для размера массива
-    cout << "Введите размер массива: "; // Просим пользователя ввести размер
-    cin >> n;                    // Считываем размер массива
-
-    int arr[n];                  // Объявляем массив из n элементов
-    cout << "Введите элементы массива: "; 
-    for (int i = 0; i < n; i++) { // Цикл для ввода элементов
-        cin >> arr[i];           // Читаем элемент и сохраняем в массив
-    }
-
-    int maxVal = arr[0], index = 0; // Начальный максимум = первый элемент
-    for (int i = 1; i < n; i++) {   // Перебираем элементы начиная со 2-го
-        if (arr[i] > maxVal) {      // Если нашли большее число
-            maxVal = arr[i];        // Обновляем значение максимума
-            index = i;              // Запоминаем его индекс
-        }
-    }
-
-    cout << "Максимальный элемент: " 
-         << maxVal << " на позиции " << index << endl; // Вывод результата
-    return 0;                   // Завершаем программу
-
-#include <iostream>              // Для cout
-#include <list>                  // Для std::list
+#include <iostream>
+#include <string>
 using namespace std;
 
 int main() {
-    list<int> nums = {1, 2, 3, 4, 5, 6, 7}; // Создаём список чисел
-
-    // Итератор пробегает по списку
-    for (auto it = nums.begin(); it != nums.end(); ) {
-        if (*it % 2 == 0)              // Если элемент чётный
-            it = nums.erase(it);       // Удаляем элемент и получаем новый итератор
-        else
-            ++it;                      // Иначе двигаемся дальше
+    string str = "AaBbCcDd";
+    string uppercase = "";
+    string lowercase = "";
+    
+    for (int i = 0; i < str.length(); i++) {
+        if (i % 2 == 0) {
+            uppercase += str[i]; // Четные индексы - заглавные
+        } else {
+            lowercase += str[i]; // Нечетные индексы - строчные
+        }
     }
+    
+    cout << "Заглавные: " << uppercase << endl;
+    cout << "Строчные: " << lowercase << endl;
+    
+    return 0;
+}       
 
-    cout << "Список после удаления четных элементов: ";
-    for (int x : nums) {               // Проходим по списку
-        cout << x << " ";              // Выводим элемент
-    }
-    return 0;                          // Завершение программы
+//Стек
+int main() {
+    stack<int> st;        // создаём стек для int
+
+    st.push(10);          // push — добавить элемент
+    st.push(20);
+    st.push(30);
+
+    cout << "Верхний элемент: " << st.top() << endl; // top — просмотр верхнего
+
+    st.pop();             // pop — удалить верхний элемент
+
+    cout << "Новый верхний элемент: " << st.top() << endl;
+    cout << "Размер стека: " << st.size() << endl;
+
+    return 0;
 }
